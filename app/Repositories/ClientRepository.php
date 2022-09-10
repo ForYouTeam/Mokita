@@ -71,6 +71,20 @@ class ClientRepository implements ClientRepoInterfaces {
 
     public function deleteClient($client_id)
     {
-        
+        $data = new ClientModel;
+        try {
+            $data->whereId($client_id)->delete();
+            $client = array(
+                'code' => 200,
+                'message' => 'Success to delete data',
+            );
+        } catch (\Throwable $th) {
+            $client = array(
+                'code' => 500,
+                'message' => $th->getMessage()
+            );
+        }
+
+        return $client;
     }
 }

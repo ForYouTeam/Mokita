@@ -37,4 +37,10 @@ class ClientController extends Controller
 
         return response()->json($client, $client['code']);
     }
+
+    public function deleteData($id)
+    {
+        $client = $this->clientrepo->deleteClient($id);
+        return response()->json($client, $client['code']);
+    }
 }

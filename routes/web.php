@@ -19,4 +19,5 @@ Route::prefix('v1/client')->controller(ClientController::class)->group(function(
     Route::get('/', 'getAllData');
     Route::get('/{client}', 'getDataById');
     Route::post('/', 'upsertData');
+    Route::delete('/{client}', 'deleteData');
 });
