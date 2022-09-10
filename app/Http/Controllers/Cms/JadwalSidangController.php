@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cms;
 
+use App\Http\Controllers\Controller;
 use App\Interfaces\JadwalSidangInterfaces;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,12 @@ class JadwalSidangController extends Controller
     public function getAllData()
     {
         $jadwal = $this->jadwalrepo->getAllJadwal();
+        return response()->json($jadwal, $jadwal['code']);
+    }
+
+    public function getDataById($id)
+    {
+        $jadwal = $this->jadwalrepo->getJadwalById($id);
         return response()->json($jadwal, $jadwal['code']);
     }
 }

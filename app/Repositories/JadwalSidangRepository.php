@@ -29,7 +29,21 @@ class JadwalSidangRepository implements JadwalSidangInterfaces
 
     public function getJadwalById($jadwal_id)
     {
-        
+        $data = new JadwalSidangModel();
+        try {
+            $jadwal = array(
+                'code' => 200,
+                'message' => 'Success to get data',
+                'data' => $data->whereId($jadwal_id)->get()
+            );
+        } catch (\Throwable $th) {
+            $jadwal = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }
+
+        return $jadwal;
     }
 
     public function upsertJadwal($jadwal_id, array $newDetail)

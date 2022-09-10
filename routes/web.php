@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\cms\ClientController;
 use App\Http\Controllers\Cms\HakimController;
-use App\Http\Controllers\JadwalSidangController;
+use App\Http\Controllers\Cms\JadwalSidangController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
