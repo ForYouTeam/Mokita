@@ -16,6 +16,7 @@ class CreateClientTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->string('agama');
+            $table->string('pendidikan');
             $table->string('pekerjaan');
             $table->string('alamat');
             $table->string('kelurahan');
