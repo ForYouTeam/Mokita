@@ -9,4 +9,5 @@ Route::get('/', function () {
 
 Route::prefix('v1/hakim')->controller(HakimController::class)->group(function() {
     Route::get('/', 'getAllData');
+    Route::get('/{hakim}', 'getDataById');
 });

@@ -28,7 +28,20 @@ class HakimRepository implements HakimRepoInterfaces
 
     public function getHakimById($hakim_id)
     {
-        
+        $data = new HakimModel;
+        try {
+            $hakim = array(
+                'code' => 200,
+                'data' => $data->whereId($hakim_id)->get(),
+            );
+        } catch (\Throwable $th) {
+            $hakim = array(
+                'code' => 500,
+                'message' => $th->getMessage()
+            );
+        }
+
+        return $hakim;
     }
 
     public function upsertHakim($hakim_id, array $newDetail)

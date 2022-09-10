@@ -20,4 +20,10 @@ class HakimController extends Controller
         $hakim = $this->hakimrepo->getAllHakim();
         return response()->json($hakim, $hakim['code']);
     }
+
+    public function getDataById($id)
+    {
+        $hakim = $this->hakimrepo->getHakimById($id);
+        return response()->json($hakim, $hakim['code']);
+    }
 }
