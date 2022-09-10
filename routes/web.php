@@ -17,4 +17,5 @@ Route::prefix('v1/hakim')->controller(HakimController::class)->group(function() 
 
 Route::prefix('v1/client')->controller(ClientController::class)->group(function() {
     Route::get('/', 'getAllData');
+    Route::get('/{client}', 'getDataById');
 });

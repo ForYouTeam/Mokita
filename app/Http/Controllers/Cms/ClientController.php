@@ -19,4 +19,10 @@ class ClientController extends Controller
         $client = $this->clientrepo->getAllClient();
         return response()->json($client, $client['code']);
     }
+
+    public function getDataById($id)
+    {
+        $client = $this->clientrepo->getClientById($id);
+        return response()->json($client, $client['code']);
+    }
 }
