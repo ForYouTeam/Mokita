@@ -16,9 +16,9 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-        'status' => 'required|max"255|min:2',
-        'nama' => 'required|max"255|min:2',
-        'marga' => 'required|max"255|min:2',
+        'status' => 'required|max:255|min:2',
+        'nama' => 'required|max:255|min:2',
+        'marga' => 'required|max:255|min:2',
         'tempat_lahir' => 'required',
         'tgl_lahir' => 'required',
         'agama' => 'required|max:255|min:2',

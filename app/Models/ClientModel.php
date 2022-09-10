@@ -11,7 +11,7 @@ class ClientModel extends Model
     protected $table = 'client';
     protected $fillable = [
         'id', 'status', 'nama', 'marga', 'tempat_lahir', 'tgl_lahir', 'agama',
-        'pekerjaan', 'alamat', 'kelurahan', 'kecamatan', 'kabupaten',
+        'pendidikan', 'pekerjaan', 'alamat', 'kelurahan', 'kecamatan', 'kabupaten',
         'created_at', 'updated_at'
     ];
 }

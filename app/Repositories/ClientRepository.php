@@ -45,9 +45,28 @@ class ClientRepository implements ClientRepoInterfaces {
         return $client;
     }
 
-    public function upsertClient(array $new_detail)
+    public function upsertClient($client_id, array $new_detail)
     {
-        
+        $data = new ClientModel;
+        try {
+            $client = array(
+                'code' => 200,
+                'message' => 'Success to proccess data',
+            );
+            if ($client_id) {
+                $data->whereId($client_id)->update($new_detail);
+            } else {
+                $data->create($new_detail);
+            }
+            
+        } catch (\Throwable $th) {
+            $client = array(
+                'code' => 500,
+                'message' => $th->getMessage()
+            );
+        }
+
+        return $client;
     }
 
     public function deleteClient($client_id)
