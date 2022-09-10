@@ -48,7 +48,25 @@ class JadwalSidangRepository implements JadwalSidangInterfaces
 
     public function upsertJadwal($jadwal_id, array $newDetail)
     {
-        
+        $data = new JadwalSidangModel();
+        try {
+            $jadwal = array(
+                'code' => 200,
+                'message' => 'success to proccess data',
+            );
+            if ($jadwal_id) {
+                $data->whereId($jadwal_id)->update($newDetail);
+            } else {
+                $data->create($newDetail);
+            }
+        } catch (\Throwable $th) {
+            $jadwal = array(
+                'code' => 500,
+                'message' => $th->getMessage()
+            );
+        }
+
+        return $jadwal;
     }
 
     public function deleteJadwal($jadwal_id)
