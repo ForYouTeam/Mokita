@@ -71,6 +71,20 @@ class HakimRepository implements HakimRepoInterfaces
 
     public function deleteHakim($hakim_id)
     {
-        
+        $data = new HakimModel;
+        try {
+            $data->whereId($hakim_id)->delete();
+            $hakim = array(
+                'code' => 200,
+                'message' => 'success deleting data'
+            );
+        } catch (\Throwable $th) {
+            $hakim = array(
+                'code' => 500,
+                'message' => $th->getMessage()
+            );
+        }
+
+        return $hakim;
     }
 }

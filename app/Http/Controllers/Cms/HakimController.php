@@ -38,4 +38,10 @@ class HakimController extends Controller
 
         return response()->json($hakim, $hakim['code']);
     }
+
+    public function deleteData($id)
+    {
+        $hakim = $this->hakimrepo->deleteHakim($id);
+        return response()->json($hakim, $hakim['code']);
+    }
 }
