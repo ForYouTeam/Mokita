@@ -71,6 +71,20 @@ class JadwalSidangRepository implements JadwalSidangInterfaces
 
     public function deleteJadwal($jadwal_id)
     {
-        
+        $data = new JadwalSidangModel();
+        try {
+            $data->whereId($jadwal_id)->delete();
+            $jadwal = array(
+                'code' => 200,
+                'message' => 'Success to delete data',
+            );
+        } catch (\Throwable $th) {
+            $jadwal = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }
+
+        return $jadwal;
     }
 }

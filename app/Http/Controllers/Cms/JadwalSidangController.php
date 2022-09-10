@@ -37,4 +37,11 @@ class JadwalSidangController extends Controller
 
         return response()->json($jadwal, $jadwal['code']);
     }
+
+    
+    public function deleteData($id)
+    {
+        $jadwal = $this->jadwalrepo->deleteJadwal($id);
+        return response()->json($jadwal, $jadwal['code']);
+    }
 }
