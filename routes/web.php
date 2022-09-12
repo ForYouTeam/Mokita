@@ -35,4 +35,6 @@ Route::prefix('v1/anak')->controller(AnakController::class)->group(function() {
     Route::get('/', 'getAllData');
     Route::post('/', 'upsertDataAnak');
     Route::post('/detail', 'upsertDataDetail');
+    Route::delete('/{anak}', 'deleteDataAnak');
+    Route::delete('/detail/{detail}', 'deleteDataDetail');
 });

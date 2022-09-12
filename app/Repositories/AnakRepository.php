@@ -58,6 +58,20 @@ class AnakRepository implements AnakRepoInterfaces
 
     public function deleteAnak($id_anak)
     {
-        
+        $data= new AnakModel;
+        try {
+            $anak = array(
+                'code' => 200,
+                'message' => 'success to delete data',
+                'data' => $data->whereId($id_anak)->delete()
+            );
+        } catch (\Throwable $th) {
+            $anak = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }
+
+        return $anak;
     }
 }

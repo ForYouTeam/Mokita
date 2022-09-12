@@ -32,6 +32,19 @@ class AnakController extends Controller
         return response()->json($anak, $anak['code']);
     }
 
+    public function upsertDataAnak(AnakRequest $request)
+    {
+        $date = Carbon::now();
+        $idAnak = $request->id | null;
+
+        $dataAnak = $request->only(['id_detail_anak', 'nama', 'tempat_lahir', 'tgl_lahir']);
+        $dataAnak['updated_at'] = $date;
+
+        $anak = $this->anakrepo->upsertAnak($idAnak, $dataAnak);
+
+        return response()->json($anak, $anak['code']);
+    }
+
     public function upsertDataDetail(DetailAnakRequest $request)
     {
         $date = Carbon::now();
@@ -45,16 +58,15 @@ class AnakController extends Controller
         return response()->json($detail, $detail['code']);
     }
 
-    public function upsertDataAnak(AnakRequest $request)
+    public function deleteDataAnak($id)
     {
-        $date = Carbon::now();
-        $idAnak = $request->id | null;
-
-        $dataAnak = $request->only(['id_detail_anak', 'nama', 'tempat_lahir', 'tgl_lahir']);
-        $dataAnak['updated_at'] = $date;
-
-        $anak = $this->anakrepo->upsertAnak($idAnak, $dataAnak);
-
+        $anak = $this->anakrepo->deleteAnak($id);
         return response()->json($anak, $anak['code']);
+    }
+
+    public function deleteDataDetail($id)
+    {
+        $detail = $this->detailrepo->deleteDetailAnak($id);
+        return response()->json($detail, $detail['code']);
     }
 }
