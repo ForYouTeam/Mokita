@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Cms\AnakController;
 use App\Http\Controllers\cms\ClientController;
 use App\Http\Controllers\Cms\HakimController;
 use App\Http\Controllers\Cms\JadwalSidangController;
@@ -28,4 +29,17 @@ Route::prefix('v1/jadwal')->controller(JadwalSidangController::class)->group(fun
     Route::get('/{jadwal}', 'getDataById');
     Route::post('/', 'upsertData');
     Route::delete('/{jadwal}', 'deleteData');
+});
+
+Route::prefix('v1/anak')->controller(AnakController::class)->group(function() {
+    Route::get('/{anak}', 'getDataByIdAnak');
+    Route::post('/', 'upsertDataAnak');
+    Route::delete('/{anak}', 'deleteDataAnak');
+});
+
+Route::prefix('v1/detail_anak')->controller(AnakController::class)->group(function() {
+    Route::get('/', 'getAllDataDetail');
+    Route::get('/{detail}', 'getDataByIdDetail');
+    Route::post('/', 'upsertDataDetail');
+    Route::delete('/{detail}', 'deleteDataDetail');
 });

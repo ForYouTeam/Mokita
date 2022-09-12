@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AnakRequest extends FormRequest
+class DetailAnakRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,10 +16,7 @@ class AnakRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_detail_anak.*' => 'required', 
-            'nama.*' => 'required|max:255|min:2', 
-            'tempat_lahir.*' => 'required|max:255|min:2', 
-            'tgl_lahir.*' => 'required'
+            'hak_asuh' => 'required|min:2|max:255'
         ];
     }
 
