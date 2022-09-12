@@ -18,7 +18,7 @@ class CreateGugatanTable extends Migration
             $table->string('no_akta_nikah');
             $table->text('tinggal_1');
             $table->text('tinggal_2');
-            $table->foreignId('id_anak')->constrained('anak');
+            $table->foreignId('id_anak')->constrained('detail_anak');
             $table->date('tgl_tidak_rukun');
             $table->text('penyebab');
             $table->date('puncak_konflik');

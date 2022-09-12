@@ -15,4 +15,19 @@ class GugatanModel extends Model
         'tgl_tidak_rukun', 'penyebab', 'puncak_konflik', 'lama_pisah',
         'created_at', 'updated_at'
     ];
+
+    public function penggugatRole()
+    {
+        return $this->belongsTo(ClientModel::class, 'id_penggugat');
+    }
+
+    public function tergugatRole()
+    {
+        return $this->belongsTo(ClientModel::class, 'id_tergugat');
+    }
+
+    public function detailAnakRole()
+    {
+        return $this->belongsTo(DetailAnakModel::class, 'id_anak');
+    }
 }

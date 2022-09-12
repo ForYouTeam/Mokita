@@ -16,10 +16,10 @@ class AnakRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_detail_anak' => 'required', 
-            'nama' => 'required|max:255|min:2', 
-            'tempat_lahir' => 'required|max:255|min:2', 
-            'tgl_lahir' => 'required'
+            'id_detail_anak.*' => 'required', 
+            'nama.*' => 'required|max:255|min:2', 
+            'tempat_lahir.*' => 'required|max:255|min:2', 
+            'tgl_lahir.*' => 'required'
         ];
     }
 
