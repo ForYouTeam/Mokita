@@ -21,7 +21,7 @@ class AnakController extends Controller
         $this->detailrepo = $detailrepo;
     }
 
-    public function getAllData()
+    public function getAllDataDetail()
     {
         $anak = $this->detailrepo->getAllDetailAnak();
         foreach ($anak['data'] as $key => $value) {
@@ -30,6 +30,18 @@ class AnakController extends Controller
         }
 
         return response()->json($anak, $anak['code']);
+    }
+
+    public function getDataByIdAnak($id)
+    {
+        $anak = $this->anakrepo->getAnakById($id);
+        return response()->json($anak, $anak['code']);
+    }
+
+    public function getDataByIdDetail($id)
+    {
+        $detail = $this->detailrepo->getDetailAnakById($id);
+        return response()->json($detail, $detail['code']);
     }
 
     public function upsertDataAnak(AnakRequest $request)

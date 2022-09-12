@@ -29,7 +29,21 @@ class AnakRepository implements AnakRepoInterfaces
 
     public function getAnakById($id_anak)
     {
-        
+        $data = new AnakModel;
+        try {
+            $anak = array(
+                'code' => 200,
+                'message' => 'success to get data',
+                'data' => $data->whereId($id_anak)->get()
+            );
+        } catch (\Throwable $th) {
+            $anak = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }
+
+        return $anak;
     }
 
     public function upsertAnak($id_anak, array $newDetail)

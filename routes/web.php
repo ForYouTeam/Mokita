@@ -32,9 +32,14 @@ Route::prefix('v1/jadwal')->controller(JadwalSidangController::class)->group(fun
 });
 
 Route::prefix('v1/anak')->controller(AnakController::class)->group(function() {
-    Route::get('/', 'getAllData');
+    Route::get('/{anak}', 'getDataByIdAnak');
     Route::post('/', 'upsertDataAnak');
-    Route::post('/detail', 'upsertDataDetail');
     Route::delete('/{anak}', 'deleteDataAnak');
-    Route::delete('/detail/{detail}', 'deleteDataDetail');
+});
+
+Route::prefix('v1/detail_anak')->controller(AnakController::class)->group(function() {
+    Route::get('/', 'getAllDataDetail');
+    Route::get('/{detail}', 'getDataByIdDetail');
+    Route::post('/', 'upsertDataDetail');
+    Route::delete('/{detail}', 'deleteDataDetail');
 });
