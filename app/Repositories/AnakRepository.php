@@ -15,7 +15,7 @@ class AnakRepository implements AnakRepoInterfaces
                 'code' => 200,
                 'count' => $data->count(),
                 'message' => 'success to get data',
-                'data' => $data->get()
+                'data' => $data->select(['id', 'nama'])->get()
             );
         } catch (\Throwable $th) {
             $anak = array(

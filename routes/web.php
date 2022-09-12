@@ -32,5 +32,5 @@ Route::prefix('v1/jadwal')->controller(JadwalSidangController::class)->group(fun
 });
 
 Route::prefix('v1/anak')->controller(AnakController::class)->group(function() {
-    Route::get('/{anak}', 'getAllData');
+    Route::get('/', 'getAllData');
 });
