@@ -33,4 +33,6 @@ Route::prefix('v1/jadwal')->controller(JadwalSidangController::class)->group(fun
 
 Route::prefix('v1/anak')->controller(AnakController::class)->group(function() {
     Route::get('/', 'getAllData');
+    Route::post('/', 'upsertDataAnak');
+    Route::post('/detail', 'upsertDataDetail');
 });
