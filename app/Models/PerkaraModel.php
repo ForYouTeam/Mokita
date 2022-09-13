@@ -19,7 +19,7 @@ class PerkaraModel extends Model
         return $this->belongsTo(HakimModel::class, 'id_hakim');
     }
 
-    public function jadwalSidang() {
+    public function jadwalSidangRole() {
         return $this->belongsTo(JadwalSidangModel::class, 'id_jadwal_sidang');
     }
 }

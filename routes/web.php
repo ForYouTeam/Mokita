@@ -5,6 +5,7 @@ use App\Http\Controllers\cms\ClientController;
 use App\Http\Controllers\Cms\GugatanController;
 use App\Http\Controllers\Cms\HakimController;
 use App\Http\Controllers\Cms\JadwalSidangController;
+use App\Http\Controllers\Cms\PerkaraController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -50,4 +51,11 @@ Route::prefix('v1/gugatan')->controller(GugatanController::class)->group(functio
     Route::get('/{gugatan}', 'getDataById');
     Route::post('/', 'upsertData');
     Route::delete('/{gugatan}', 'deleteData');
+});
+
+Route::prefix('v1/perkara')->controller(PerkaraController::class)->group(function() {
+    Route::get('/', 'getAllData');
+    Route::get('/{perkara}', 'getDataById');
+    Route::post('/', 'upsertData');
+    Route::delete('/{perkara}', 'deleteData');
 });
