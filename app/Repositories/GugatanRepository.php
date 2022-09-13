@@ -34,7 +34,25 @@ class GugatanRepository implements GugatanRepoInterfaces
 
     public function upsertGugatan($gugatan_id, array $newDetail)
     {
-        
+        $data = new GugatanModel;
+        try {
+            $gugatan = array(
+                'code' => 200,
+                'message' => 'success to proccess data'
+            );
+            if (!$gugatan_id) {
+                $data->create($newDetail);
+            } else {
+                $gugatan['data'] = $data->whereId($gugatan_id)->update($newDetail);
+            }
+        } catch (\Throwable $th) {
+            $gugatan = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }
+
+        return $gugatan;
     }
 
     public function deleteGugatan($gugatan_id)
