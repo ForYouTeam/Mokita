@@ -10,7 +10,7 @@ class CreatePerkaraTable extends Migration
     {
         Schema::create('perkara', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_hakim')->constrained('perkara');
+            $table->foreignId('id_hakim')->constrained('hakim');
             $table->string('nama_pengacara');
             $table->string('nama_penitra');
             $table->foreignId('id_gugatan')->constrained('gugatan');
