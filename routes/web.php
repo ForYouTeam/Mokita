@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Cms\AnakController;
 use App\Http\Controllers\cms\ClientController;
+use App\Http\Controllers\Cms\GugatanController;
 use App\Http\Controllers\Cms\HakimController;
 use App\Http\Controllers\Cms\JadwalSidangController;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,11 @@ Route::prefix('v1/detail_anak')->controller(AnakController::class)->group(functi
     Route::get('/{detail}', 'getDataByIdDetail');
     Route::post('/', 'upsertDataDetail');
     Route::delete('/{detail}', 'deleteDataDetail');
+});
+
+Route::prefix('v1/gugatan')->controller(GugatanController::class)->group(function() {
+    Route::get('/', 'getAllData');
+    Route::get('/{gugatan}', 'getDataById');
+    Route::post('/', 'upsertData');
+    Route::delete('/{gugatan}', 'deleteData');
 });
