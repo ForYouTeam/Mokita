@@ -9,7 +9,7 @@ use App\Http\Controllers\Cms\PerkaraController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('base.Skelton');
 });
 
 Route::prefix('v1/hakim')->controller(HakimController::class)->group(function() {
