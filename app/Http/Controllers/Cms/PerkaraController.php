@@ -42,4 +42,10 @@ class PerkaraController extends Controller
         $perkara = $this->perkararepo->upsertPerkara($id, $data);
         return response()->json($perkara, $perkara['code']);
     }
+
+    public function deleteData($id)
+    {
+        $perkara = $this->perkararepo->deletePerkara($id);
+        return response()->json($perkara, $perkara['code']);
+    }
 }

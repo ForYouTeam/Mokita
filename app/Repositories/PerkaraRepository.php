@@ -79,6 +79,20 @@ class PerkaraRepository implements PerkaraRepoInterfaces
 
     public function deletePerkara($perkara_id)
     {
-        
+        $data = new PerkaraModel;
+        try {
+            $perkara = array(
+                'code' => 200,
+                'message' => 'sucess to delete data',
+                'data' => $data->whereId($perkara_id)->delete()
+            );
+        } catch (\Throwable $th) {
+            $perkara = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }   
+
+        return $perkara;
     }
 }
