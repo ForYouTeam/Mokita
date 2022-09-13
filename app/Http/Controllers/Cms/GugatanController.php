@@ -44,4 +44,10 @@ class GugatanController extends Controller
         $gugatan = $this->gugatanRepo->upsertGugatan($id, $data);
         return response()->json($gugatan, $gugatan['code']);
     }
+
+    public function deleteData($id)
+    {
+        $gugatan = $this->gugatanRepo->deleteGugatan($id);
+        return response()->json($gugatan, $gugatan['code']);
+    }
 }

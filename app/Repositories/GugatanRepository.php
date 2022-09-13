@@ -71,6 +71,20 @@ class GugatanRepository implements GugatanRepoInterfaces
 
     public function deleteGugatan($gugatan_id)
     {
-        
+        $data = new GugatanModel;
+        try {
+            $gugatan = array(
+                'code' => 200,
+                'message' => 'success to get data',
+                'data' => $data->whereId($gugatan_id)->delete()
+            );
+        } catch (\Throwable $th) {
+            $gugatan = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }
+
+        return $gugatan;
     }
 }
