@@ -29,7 +29,21 @@ class GugatanRepository implements GugatanRepoInterfaces
 
     public function getGugatanById($gugatan_id)
     {
-        
+        $data = new GugatanModel;
+        try {
+            $gugatan = array(
+                'code' => 200,
+                'message' => 'success to get data',
+                'data' => $data->whereId($gugatan_id)->get()
+            );
+        } catch (\Throwable $th) {
+            $gugatan = array(
+                'code' => 500,
+                'message' => $th->getMessage(),
+            );
+        }
+
+        return $gugatan;
     }
 
     public function upsertGugatan($gugatan_id, array $newDetail)

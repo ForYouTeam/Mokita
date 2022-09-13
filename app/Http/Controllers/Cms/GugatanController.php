@@ -23,6 +23,12 @@ class GugatanController extends Controller
         return response()->json($gugatan, $gugatan['code']);
     }
 
+    public function getDataById($id)
+    {
+        $gugatan = $this->gugatanRepo->getGugatanById($id);
+        return response()->json($gugatan, $gugatan['code']);
+    }
+
     public function upsertData(GugatanRequest $request)
     {
         $date = Carbon::now();
