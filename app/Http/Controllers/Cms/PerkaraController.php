@@ -23,6 +23,12 @@ class PerkaraController extends Controller
         return response()->json($perkara, $perkara['code']);
     }
 
+    public function getDataById($id)
+    {
+        $perkara = $this->perkararepo->getPerkaraById($id);
+        return response()->json($perkara, $perkara['code']);
+    }
+
     public function upsertData(PerkaraRequest $request)
     {
         $date = Carbon::now();
