@@ -34,7 +34,7 @@ class HakimRepository implements HakimRepoInterfaces
             $hakim = array(
                 'code' => 200,
                 'message' => 'success to get data',
-                'data' => $data->whereId($hakim_id)->get(),
+                'data' => $data->whereId($hakim_id)->first(),
             );
         } catch (\Throwable $th) {
             $hakim = array(
