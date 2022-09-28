@@ -132,12 +132,12 @@
             })
         }
 
-        const alertSuccess = () => {
+        const alertSuccess = (params) => {
             $('#univModal').modal('hide')
             Swal.fire({
                 icon: 'success',
-                title: 'Good Job',
-                text: 'Data has been saved'
+                title: 'Kerja bagus',
+                text: params
             }).then((result) => {
                 if (result.isConfirmed) {
                     clearInput()
@@ -178,7 +178,7 @@
                 url: url + 'v1/hakim/',
                 data: dataForm,
                 success: (result) => {
-                    alertSuccess()
+                    alertSuccess('Data berhasil di simpan')
                 },
                 error: (err) => {
                     let response = err.responseJSON.errors
@@ -203,6 +203,33 @@
                     $(`#${i}`).val(value)
                 })
                 $('#univModal').modal('show')
+            })
+        })
+
+        $(document).on('click', '#btn-del', function() {
+            let _id = $(this).data('id')
+            Swal.fire({
+                title: 'Apa kau yakin?',
+                text: "Data akan dihapus secara permanen!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, hapus itu!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "DELETE",
+                        url : url + 'v1/hakim/' + _id,
+                        success: (result) => {
+                            alertSuccess('Data berhasil dihapus')
+                        },
+                        error: (err) => {
+                            alertError()
+                        }
+                    })
+                }
             })
         })
     </script>
