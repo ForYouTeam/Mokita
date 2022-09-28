@@ -33,7 +33,7 @@ class ClientRepository implements ClientRepoInterfaces {
             $client = array(
                 'code' => 200,
                 'message' => 'Success to get data',
-                'data' => $data->whereId($client_id)->get()
+                'data' => $data->whereId($client_id)->first()
             );
         } catch (\Throwable $th) {
             $client = array(

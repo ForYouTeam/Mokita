@@ -16,6 +16,10 @@ Route::get('/hakim', function() {
     return view('page.Hakim');
 });
 
+Route::get('/client', function() {
+    return view('page.Client');
+});
+
 Route::prefix('v1/hakim')->controller(HakimController::class)->group(function() {
     Route::get('/', 'getAllData');
     Route::get('/{hakim}', 'getDataById');
