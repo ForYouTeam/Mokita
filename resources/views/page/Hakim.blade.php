@@ -36,6 +36,7 @@
                 <div class="col-md-6">
                     <div class="form-group mb-3">
                         <label>Nama</label>
+                        <input type="hidden" name="id" id="id">
                         <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukan text disini...">
                         <span class="help-block text-danger"><small class="danger-alert" id="nama-alert"></small></span>
                     </div>
@@ -122,8 +123,8 @@
                             <td>${value.tempat_lahir} | ${value.tgl_lahir}</td>
                             <td>${value.jabatan}</td>
                             <td>
-                                <button data-id="${value.id}" type="button" class="btn btn-sm btn-outline-info">Info</button>
-                                <button data-id="${value.id}" type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                                <button id="btn-info" data-id="${value.id}" type="button" class="btn btn-sm btn-outline-info">Info</button>
+                                <button id="btn-del" data-id="${value.id}" type="button" class="btn btn-sm btn-outline-danger">Delete</button>
                             </td>
                         </tr>
                     `)
@@ -139,8 +140,17 @@
                 text: 'Data has been saved'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    clearInput()
                     getHukum()
                 }
+            })
+        }
+        const alertError = () => {
+            $('#univModal').modal('hide')
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ada yang salah',
+                text: 'Kami mengalami kendala, harap coba lagi nanti!'
             })
         }
 
@@ -172,14 +182,27 @@
                 },
                 error: (err) => {
                     let response = err.responseJSON.errors
-                    if (response.length > 0) {
+                    if (err.status == 422) {
                         $.each(response.data, (i, value) => {
                             $(`#${i}-alert`).html(value)
                         })
                         $('#btn-proccess').html('Kirim')
                         $('#btn-proccess').prop('disabled', false)
+                    } else {
+                        alertError()
                     }
                 }
+            })
+        })
+
+        $(document).on('click', '#btn-info', function() {
+            let _id = $(this).data('id')
+            clearInput()
+            $.get(url + 'v1/hakim/' + _id, (result) => {
+                $.each(result.data, (i, value) => {
+                    $(`#${i}`).val(value)
+                })
+                $('#univModal').modal('show')
             })
         })
     </script>
