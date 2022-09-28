@@ -21,9 +21,7 @@ class HakimRequest extends FormRequest
         'tempat_lahir' => 'required|min:2', 
         'tgl_lahir' => 'required', 
         'jabatan' => 'required|max:255|min:2',
-        'pendidikan_s1' => 'required', 
-        'pendidikan_s2' => 'min:2', 
-        'pendidikan_s3' => 'min:2', 
+        'pendidikan_s1' => 'required',
         'sertifikat_mediator' => 'required|max:255|min:2'
         ];
     }

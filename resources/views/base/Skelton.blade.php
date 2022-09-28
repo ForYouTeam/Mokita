@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -29,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('property/css/app-dark.css') }}" id="darkTheme" disabled>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.34/dist/sweetalert2.all.js" integrity="sha256-dM3nV3SuUwK04X1Jp1Pul6Uqob1z+3igyB10aYS48xM=" crossorigin="anonymous"></script>
 </head>
 
 <body class="horizontal light  ">
@@ -58,7 +60,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button id="btn-proccess" type="button" class="btn btn-primary">Kirim</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                         </div>
 
                     </div>
@@ -283,6 +286,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-56159088-1');
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.34/dist/sweetalert2.all.min.js" integrity="sha256-VY+q0sN0i/R2qdIEtHeJ62U1Q1x1H7qvd08vkIJLDbc=" crossorigin="anonymous"></script>
     @yield('js')
 </body>
 
