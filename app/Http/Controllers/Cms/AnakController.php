@@ -21,6 +21,12 @@ class AnakController extends Controller
         $this->detailrepo = $detailrepo;
     }
 
+    public function getAllAnakData($id_detail)
+    {
+        $anak = $this->anakrepo->getAllAnak($id_detail);
+        return response()->json($anak, $anak['code']);
+    }
+
     public function getAllDataDetail()
     {
         $anak = $this->detailrepo->getAllDetailAnak();

@@ -60,8 +60,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button id="btn-proccess" type="button" class="btn btn-primary">Kirim</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                            <button id="btn-proccess" type="button" class="btn btn-primary md-footer">Kirim</button>
+                            <button type="button" class="btn btn-danger md-footer" data-dismiss="modal">Tutup</button>
                         </div>
 
                     </div>

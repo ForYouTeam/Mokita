@@ -20,6 +20,10 @@ Route::get('/client', function() {
     return view('page.Client');
 });
 
+Route::get('/hak_asuh', function() {
+    return view('page.HakAsuh');
+});
+
 Route::prefix('v1/hakim')->controller(HakimController::class)->group(function() {
     Route::get('/', 'getAllData');
     Route::get('/{hakim}', 'getDataById');
@@ -42,6 +46,7 @@ Route::prefix('v1/jadwal')->controller(JadwalSidangController::class)->group(fun
 });
 
 Route::prefix('v1/anak')->controller(AnakController::class)->group(function() {
+    Route::get('/all/{anak}', 'getAllAnakData');
     Route::get('/{anak}', 'getDataByIdAnak');
     Route::post('/', 'upsertDataAnak');
     Route::delete('/{anak}', 'deleteDataAnak');
