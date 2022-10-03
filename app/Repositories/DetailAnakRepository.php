@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\DetailAnakRepoInterfaces;
+use App\Models\AnakModel;
 use App\Models\DetailAnakModel;
 
 class DetailAnakRepository implements DetailAnakRepoInterfaces
@@ -34,7 +35,7 @@ class DetailAnakRepository implements DetailAnakRepoInterfaces
             $detail = array(
                 'code' => 200,
                 'message' => 'success to get data',
-                'data' => $data->whereId($detail_anak_id)->get()
+                'data' => $data->whereId($detail_anak_id)->first()
             );
         } catch (\Throwable $th) {
             $detail = array(
@@ -74,6 +75,10 @@ class DetailAnakRepository implements DetailAnakRepoInterfaces
     {
         $data = new DetailAnakModel;
         try {
+            $anak = AnakModel::where('id_detail_anak', $detail_anak_id)->get();
+            foreach ($anak as $key => $value) {
+                AnakModel::whereId($value->id)->delete();
+            }
             $detail = array(
                 'code' => 200,
                 'message' => 'success to delete data',
